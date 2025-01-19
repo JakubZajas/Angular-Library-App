@@ -1,0 +1,115 @@
+<div class="book-form">
+  <h2>Book Registration</h2>
+  
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input 
+        type="text"
+        id="title"
+        formControlName="title"
+        class="form-control"
+        [class.is-invalid]="hasError('title', 'required') || hasError('title', 'minlength')"
+      >
+      <div class="error-message" *ngIf="hasError('title', 'required')">
+        Title is required
+      </div>
+      <div class="error-message" *ngIf="hasError('title', 'minlength')">
+        Title must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Author">Author</label>
+      <input 
+        type="text"
+        id="author"
+        formControlName="author"
+        class="form-control"
+        [class.is-invalid]="hasError('author', 'required') || hasError('author', 'minlength')"
+      >
+      <div class="error-message" *ngIf="hasError('author', 'required')">
+        Author is required
+      </div>
+      <div class="error-message" *ngIf="hasError('author', 'minlength')">
+        Author must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="publicationYear">Publication Year</label>
+      <input 
+        type="number"
+        id="publicationYear"
+        formControlName="publicationYear"
+        class="form-control"
+        [class.is-invalid]="hasError('publicationYear', 'required') || hasError('publicationYear', 'min') || hasError('publicationYear', 'max')"
+      >
+      <div class="error-message" *ngIf="hasError('publicationYear', 'required')">
+        Publication year is required
+      </div>
+      <div class="error-message" *ngIf="hasError('publicationYear', 'min') || hasError('publicationYear', 'max')">
+        Year must be between 1800 and 2024
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <select 
+        id="genre"
+        formControlName="genre"
+        class="form-control"
+        [class.is-invalid]="hasError('genre', 'required')"
+      >
+        <option value="">Select a genre</option>
+        <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+      </select>
+      <div class="error-message" *ngIf="hasError('genre', 'required')">
+        Genre is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="checkbox-label">
+        <input 
+          type="checkbox"
+          formControlName="isAvailable">
+        Available
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea 
+        id="description"
+        formControlName="description"
+        class="form-control"
+        rows="4"
+        [class.is-invalid]="hasError('description', 'required') || hasError('description', 'minlength')">
+      </textarea>
+      <div class="error-message" *ngIf="hasError('description', 'required')">
+        Description is required
+      </div>
+      <div class="error-message" *ngIf="hasError('description', 'minlength')">
+        Description must be at least 10 characters
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button 
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="viewMode"
+      >
+        Submit
+      </button>
+      <button 
+        type="button"
+        class="btn btn-secondary"
+        (click)="toggleViewMode()"
+      >
+        {{viewMode ? 'Edit Mode' : 'View Mode'}}
+      </button>
+    </div>
+  </form>
+  
