@@ -5,46 +5,27 @@ import { Book } from '../models/book';
 import { Author } from '../models/author';
 import { Publisher } from '../models/publisher';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   private apiUrl = 'http://localhost:3000';
   private bookList: Book[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}/books`);
   }
 
   addBook(book: Book): Observable<Book> {
-    console.log("adding new book: " + book)
+    console.log('adding new book: ' + book);
     return this.http.post<Book>(`${this.apiUrl}/books`, book);
   }
 
   removeBook(book: Book) {
     return this.http.delete<Book>(`${this.apiUrl}/books/${book.id}`);
   }
-
-  // getBooks() : Book[] {
-  //   return this.bookList;
-  // }
-
-  // addBook(customer: Book) {
-  //   this.bookList.push(customer);
-  //   console.log('zawartość Service:', this.bookList);
-  // }
-  // removeBook(book: Book){
-  //   console.log("rodzic ma usunąc:", book)
-  //   this.bookList = this.bookList.filter(( x: Book) => {
-  //     return x.id !== book.id
-  //   })
-  //   return this.bookList;
-  // }
-
-  // Authors
 
   getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${this.apiUrl}/authors`);
@@ -58,7 +39,6 @@ export class DataService {
     return this.http.delete<Author>(`${this.apiUrl}/authors/${author.id}`);
   }
 
-
   getPublishers(): Observable<Publisher[]> {
     return this.http.get<Publisher[]>(`${this.apiUrl}/publishers`);
   }
@@ -68,7 +48,8 @@ export class DataService {
   }
 
   removePublisher(publisher: Publisher) {
-    return this.http.delete<Publisher>(`${this.apiUrl}/publishers/${publisher.id}`);
+    return this.http.delete<Publisher>(
+      `${this.apiUrl}/publishers/${publisher.id}`
+    );
   }
-
 }
