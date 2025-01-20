@@ -27,8 +27,8 @@ export class AuthorRegistrationComponent {
         Validators.required, 
         Validators.max(new Date().getFullYear() + 1)
       ]],
-      biography: ['', [Validators.required, Validators.minLength(10)]],
-      published: this.fb.array([]),
+      biography: ['', [Validators.required, Validators.minLength(5)]],
+      published: ['', Validators.required],
       worksFor: ['', Validators.required],
     });
   }
