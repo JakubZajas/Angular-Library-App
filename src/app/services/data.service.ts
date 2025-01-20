@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book';
 import { Author } from '../models/author';
+import { Publisher } from '../models/publisher';
 
 
 @Injectable({
@@ -44,6 +45,7 @@ export class DataService {
   // }
 
   // Authors
+
   getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${this.apiUrl}/authors`);
   }
@@ -54,6 +56,19 @@ export class DataService {
 
   removeAuthor(author: Author) {
     return this.http.delete<Author>(`${this.apiUrl}/authors/${author.id}`);
+  }
+
+
+  getPublishers(): Observable<Publisher[]> {
+    return this.http.get<Publisher[]>(`${this.apiUrl}/publishers`);
+  }
+
+  addPublisher(publisher: Publisher): Observable<Publisher> {
+    return this.http.post<Publisher>(`${this.apiUrl}/publishers`, publisher);
+  }
+
+  removePublisher(publisher: Publisher) {
+    return this.http.delete<Publisher>(`${this.apiUrl}/publishers/${publisher.id}`);
   }
 
 }

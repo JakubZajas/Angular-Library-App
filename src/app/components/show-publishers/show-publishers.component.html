@@ -1,0 +1,13 @@
+<div class="publisher-list">
+    <h1>Publishers</h1>
+    <div *ngFor="let publisher of publishers">
+      <div class="publisher-card">
+        <h3>{{ publisher.name }}</h3>
+        <p>Year of Funding: {{ publisher.yearOfFunding }}</p>
+        <p>Authors Working for that publisher: {{ publisher.authors }}</p>
+        <p>Still Operating: {{ publisher.isStillOperating }}</p>
+  
+        <button (click)="deletePublisher(publisher)">Remove</button>
+      </div>
+    </div>
+  </div>
