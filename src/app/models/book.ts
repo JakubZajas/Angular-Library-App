@@ -1,27 +1,30 @@
 export class Book {
     id?: number;
     title: string;
-    isbn: string;
+    author: string;
     publicationYear: number;
-    isAvailable: boolean;
     genre: string;
     description: string;
+    publisher: string;
+    isAvailable: boolean;
   
     constructor(
       title: string = '',
-      isbn: string = '',
+      author: string = '',
       publicationYear: number = new Date().getFullYear(),
-      isAvailable: boolean = true,
       genre: string = '',
       description: string = '',
+      publisher: string = '',
+      isAvailable: boolean = true,
       id?: number
     ) {
       this.title = title;
-      this.isbn = isbn;
+      this.author = author;
       this.publicationYear = publicationYear;
-      this.isAvailable = isAvailable;
       this.genre = genre;
       this.description = description;
+      this.publisher = publisher;
+      this.isAvailable = isAvailable;
       this.id = id;
     }
   }

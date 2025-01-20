@@ -1,1 +1,110 @@
-<p>author-registration works!</p>
+<div class="book-form">
+  <h2>Author Registration</h2>
+
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        class="form-control"
+        [class.is-invalid]="hasError('firstName', 'required') || hasError('firstName', 'minlength')"
+      />
+      <div class="error-message" *ngIf="hasError('firstName', 'required')">
+        First name is required
+      </div>
+      <div class="error-message" *ngIf="hasError('firstName', 'minlength')">
+        First name must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input
+        type="text"
+        id="surname"
+        formControlName="surname"
+        class="form-control"
+        [class.is-invalid]="hasError('surname', 'required') || hasError('surname', 'minlength')"
+      />
+      <div class="error-message" *ngIf="hasError('surname', 'required')">
+        Surname is required
+      </div>
+      <div class="error-message" *ngIf="hasError('surname', 'minlength')">
+        Surname must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="yearOfBirth">Year of Birth</label>
+      <input
+        type="number"
+        id="yearOfBirth"
+        formControlName="yearOfBirth"
+        class="form-control"
+        [class.is-invalid]="hasError('yearOfBirth', 'required') || hasError('yearOfBirth', 'min') || hasError('yearOfBirth', 'max')"
+      />
+      <div class="error-message" *ngIf="hasError('yearOfBirth', 'required')">
+        Year of birth is required
+      </div>
+      <div class="error-message" *ngIf="hasError('yearOfBirth', 'min') || hasError('yearOfBirth', 'max')">
+        Please enter a valid year
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="biography">Biography</label>
+      <textarea
+        id="biography"
+        formControlName="biography"
+        class="form-control"
+        rows="4"
+        [class.is-invalid]="hasError('biography', 'required') || hasError('biography', 'minlength')"
+      ></textarea>
+      <div class="error-message" *ngIf="hasError('biography', 'required')">
+        Biography is required
+      </div>
+      <div class="error-message" *ngIf="hasError('biography', 'minlength')">
+        Biography must be at least 50 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="published">Published Works (Comma Separated)</label>
+      <input
+        type="text"
+        id="published"
+        formControlName="published"
+        class="form-control"
+        [class.is-invalid]="hasError('published', 'required')"
+      />
+      <div class="error-message" *ngIf="hasError('published', 'required')">
+        Published works are required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="worksFor">Works For</label>
+      <input
+        type="text"
+        id="worksFor"
+        formControlName="worksFor"
+        class="form-control"
+        [class.is-invalid]="hasError('worksFor', 'required')"
+      />
+      <div class="error-message" *ngIf="hasError('worksFor', 'required')">
+        The organization the author works for is required
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary" [disabled]="viewMode">
+        Submit
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="toggleViewMode()">
+        {{ viewMode ? 'Edit Mode' : 'View Mode' }}
+      </button>
+    </div>
+  </form>
+</div>

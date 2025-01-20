@@ -1,27 +1,27 @@
 export class Author {
     id?: number;
     firstName: string;
-    lastName: string;
-    email: string;
+    surname: string;
+    yearOfBirth: number;
     biography: string;
-    hasPublished: boolean;
-    specialization: string;
-  
+    published: string[];
+    worksFor : string;
+    
     constructor(
       firstName: string = '',
-      lastName: string = '',
-      email: string = '',
+      surname: string = '',
+      yearOfBirth: number = new Date().getFullYear(),
       biography: string = '',
-      hasPublished: boolean = false,
-      specialization: string = '',
+      published: string[] = [],
+      worksFor : string = '',
       id?: number
     ) {
       this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
+      this.surname = surname;
+      this.yearOfBirth = yearOfBirth;
       this.biography = biography;
-      this.hasPublished = hasPublished;
-      this.specialization = specialization;
+      this.published = published;
+      this.worksFor = worksFor;
       this.id = id;
     }
   }

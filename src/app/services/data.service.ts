@@ -10,6 +10,7 @@ import { Author } from '../models/author';
 })
 export class DataService {
   private apiUrl = 'http://localhost:3000';
+  private bookList: Book[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -18,8 +19,29 @@ export class DataService {
   }
 
   addBook(book: Book): Observable<Book> {
+    console.log("adding new book: " + book)
     return this.http.post<Book>(`${this.apiUrl}/books`, book);
   }
+
+  removeBook(book: Book) {
+    return this.http.delete<Book>(`${this.apiUrl}/books/${book.id}`);
+  }
+
+  // getBooks() : Book[] {
+  //   return this.bookList;
+  // }
+
+  // addBook(customer: Book) {
+  //   this.bookList.push(customer);
+  //   console.log('zawartość Service:', this.bookList);
+  // }
+  // removeBook(book: Book){
+  //   console.log("rodzic ma usunąc:", book)
+  //   this.bookList = this.bookList.filter(( x: Book) => {
+  //     return x.id !== book.id
+  //   })
+  //   return this.bookList;
+  // }
 
   // Authors
   getAuthors(): Observable<Author[]> {
@@ -28,6 +50,10 @@ export class DataService {
 
   addAuthor(author: Author): Observable<Author> {
     return this.http.post<Author>(`${this.apiUrl}/authors`, author);
+  }
+
+  removeAuthor(author: Author) {
+    return this.http.delete<Author>(`${this.apiUrl}/authors/${author.id}`);
   }
 
 }

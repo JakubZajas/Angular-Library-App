@@ -2,6 +2,7 @@
   <h2>Book Registration</h2>
   
   <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <!-- <form (ngSubmit)="onSubmitForm(customerForm)" #customerForm="ngForm"> -->
     <div class="form-group">
       <label for="title">Title</label>
       <input 
@@ -49,7 +50,7 @@
         Publication year is required
       </div>
       <div class="error-message" *ngIf="hasError('publicationYear', 'min') || hasError('publicationYear', 'max')">
-        Year must be between 1800 and 2024
+        Year must be before 2024
       </div>
     </div>
 

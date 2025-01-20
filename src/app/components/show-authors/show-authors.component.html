@@ -1,1 +1,13 @@
-<p>show-authors works!</p>
+<div class="author-list">
+    <div *ngFor="let author of authors">
+      <div class="author-card">
+        <h3>{{ author.firstName }} {{ author.surname }}</h3>
+        <p>Year of Birth: {{ author.yearOfBirth }}</p>
+        <p>Biography: {{ author.biography }}</p>
+        <p>Publisher: {{ author.published }}</p>
+        <p>Works For: {{ author.worksFor }}</p>
+  
+        <button (click)="deleteAuthor(author)">Remove</button>
+      </div>
+    </div>
+  </div>
