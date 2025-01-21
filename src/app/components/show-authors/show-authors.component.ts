@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Author } from '../../models/author';
 import { DataService } from '../../services/data.service';
 
@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
   templateUrl: './show-authors.component.html',
   styleUrl: './show-authors.component.scss'
 })
-export class ShowAuthorsComponent {
+export class ShowAuthorsComponent implements OnInit, OnDestroy {
   authors: Author[] = [];
 
 

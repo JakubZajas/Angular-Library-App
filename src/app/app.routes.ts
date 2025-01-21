@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { PublishingHouseRegistrationComponent } from './components/publisher-registration/publisher-registration.component';
 
 export const routes: Routes = [
   { path: 'book-registration', loadComponent: () => import('./components/book-form/book-form.component').then(m => m.BookFormComponent) },

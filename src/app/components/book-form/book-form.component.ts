@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { Book } from '../../models/book';
@@ -13,7 +13,6 @@ import { NgIf, NgFor, CommonModule } from '@angular/common';
   standalone: true
 })
 export class BookFormComponent {
-  book: Book = new Book;
   bookForm: FormGroup;
   viewMode = false;
 
@@ -47,20 +46,17 @@ export class BookFormComponent {
         this.bookForm.value.title,
         this.bookForm.value.author,
         this.bookForm.value.publicationYear,
-        this.bookForm.value.isAvailable,
         this.bookForm.value.genre,
-        this.bookForm.value.description
+        this.bookForm.value.description,
+        this.bookForm.value.publisher,
+        this.bookForm.value.isAvailable,
       );
       console.log("new book registered: " + newBook);
       this.dataService.addBook(newBook).subscribe(
         (response) => {
           console.log('Book added successfully:', response);
           this.bookForm.reset();
-        });
-      // let result = this.dataService.addBook(newBook);
-      // console.log(result);
-      // this.bookForm.reset();
-        
+        });        
     }
   }
 
@@ -77,13 +73,4 @@ export class BookFormComponent {
     const control = this.bookForm.get(controlName);
     return !!(control && control.hasError(errorName) && (control.dirty || control.touched));
   }
-
-
-  // onSubmitForm(form: NgForm){
-  //   this.dataService
-  //     .addBook(this.book)
-  //     .subscribe((data) => {
-  //       console.log(data);
-  //     })
-  // }
 }

@@ -8,12 +8,12 @@ export class Author {
     worksFor : string;
     
     constructor(
-      firstName: string = '',
-      surname: string = '',
+      firstName: string,
+      surname: string,
       yearOfBirth: number = new Date().getFullYear(),
-      biography: string = '',
+      biography: string,
       published: string[] = [],
-      worksFor : string = '',
+      worksFor : string,
       id?: number
     ) {
       this.firstName = firstName;

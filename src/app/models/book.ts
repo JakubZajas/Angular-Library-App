@@ -9,13 +9,13 @@ export class Book {
     isAvailable: boolean;
   
     constructor(
-      title: string = '',
-      author: string = '',
+      title: string,
+      author: string,
       publicationYear: number = new Date().getFullYear(),
-      genre: string = '',
-      description: string = '',
-      publisher: string = '',
-      isAvailable: boolean = true,
+      genre: string,
+      description: string,
+      publisher: string,
+      isAvailable: boolean,
       id?: number
     ) {
       this.title = title;

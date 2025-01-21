@@ -10,7 +10,6 @@ import { Publisher } from '../models/publisher';
 })
 export class DataService {
   private apiUrl = 'http://localhost:3000';
-  private bookList: Book[] = [];
 
   constructor(private http: HttpClient) {}
 

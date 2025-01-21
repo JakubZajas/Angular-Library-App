@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
-import { Book } from '../../models/book';
-import { NgIf, NgFor, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Author } from '../../models/author';
 
 @Component({
@@ -12,7 +11,6 @@ import { Author } from '../../models/author';
   styleUrl: './author-registration.component.scss'
 })
 export class AuthorRegistrationComponent {
-  author: Author = new Author;
   authorForm: FormGroup;
   viewMode = false;
 
@@ -51,10 +49,6 @@ export class AuthorRegistrationComponent {
           console.log('Author added successfully:', response);
           this.authorForm.reset();
         });
-      // let result = this.dataService.addBook(newBook);
-      // console.log(result);
-      // this.bookForm.reset();
-        
     }
   }
 
@@ -71,13 +65,4 @@ export class AuthorRegistrationComponent {
     const control = this.authorForm.get(controlName);
     return !!(control && control.hasError(errorName) && (control.dirty || control.touched));
   }
-
-
-  // onSubmitForm(form: NgForm){
-  //   this.dataService
-  //     .addBook(this.book)
-  //     .subscribe((data) => {
-  //       console.log(data);
-  //     })
-  // }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import {CommonModule, NgIf } from '@angular/common';
@@ -14,7 +14,6 @@ import { Publisher } from '../../models/publisher';
 })
 
 export class PublishingHouseRegistrationComponent {
-  publisher: Publisher = new Publisher;
   publisherForm: FormGroup;
   viewMode = false;
 
@@ -32,10 +31,6 @@ export class PublishingHouseRegistrationComponent {
       authors: ['', Validators.required],
       isStillOperating: [true],
     });
-  }
-
-  ngOnInit(): void {
-    console.log("Publishing House Registration Component Initialized");
   }
   
   onSubmit(): void {

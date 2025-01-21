@@ -6,10 +6,10 @@ export class Publisher {
     isStillOperating: boolean;
     
     constructor(
-        name: string = '',
+        name: string,
         yearOfFunding: number = new Date().getFullYear(),
         authors: string[] = [],
-        isStillOperating: boolean = true,
+        isStillOperating: boolean,
         id?: number
     ) {
         this.name = name;

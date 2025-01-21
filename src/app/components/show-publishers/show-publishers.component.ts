@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import { Publisher } from '../../models/publisher';
@@ -9,7 +9,7 @@ import { Publisher } from '../../models/publisher';
   templateUrl: './show-publishers.component.html',
   styleUrl: './show-publishers.component.scss'
 })
-export class ShowPublishingHousesComponent {
+export class ShowPublishingHousesComponent implements OnInit, OnDestroy{
   publishers: Publisher[] = [];
 
   constructor (

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import { Book } from '../../models/book';
@@ -9,7 +9,7 @@ import { Book } from '../../models/book';
   templateUrl: './show-books.component.html',
   styleUrl: './show-books.component.scss'
 })
-export class ShowBooksComponent {
+export class ShowBooksComponent implements OnInit, OnDestroy {
     books: Book[] = [];
 
 
@@ -41,20 +41,4 @@ export class ShowBooksComponent {
       this.loadBooks();
     })
   }
-  // loadBooks(): void {
-  //   this.dataService.getBooks().subscribe(books => {
-  //     this.books = books;
-  //   });
-  // }
-
-  // removeBook(id: string): void {
-  //   console.log("remove book")
-  //   this.loadBooks();
-  //   this.dataService.removeBook(id).subscribe(() => {
-  //     // Remove the book locally after it is removed from the server
-  //     this.books = this.books.filter(book => book.id !== id);
-  //   });
-  // }
-
-  
 }
